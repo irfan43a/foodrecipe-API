@@ -4,13 +4,28 @@ const createError = require("http-errors");
 const bodyParser = require("body-parser");
 const app = express();
 const morgan = require("morgan");
+const cors = require("cors");
+const helmet = require("helmet");
+const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 2000;
 const versioning = require("./src/routes");
 
-app.use(morgan("dev"));
 app.use(express());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
+app.use(morgan("dev"));
+app.use(cookieParser());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: false,
+  })
+);
 
 app.use("/v1", versioning);
 

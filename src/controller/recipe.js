@@ -29,8 +29,8 @@ const recipeControl = {
       const page = parseInt(req.query.page) || 1;
       const limit = parseInt(req.query.limit) || 5;
       const offset = (page - 1) * limit;
-      const sortBy = req.query.sortBy || "title";
-      const sort = req.query.sort || "asc";
+      const sortBy = req.query.sortBy || "idrecipe";
+      const sort = req.query.sort || "desc";
       const search = req.query.search || "";
       const {
         rows: [count],
@@ -38,7 +38,6 @@ const recipeControl = {
       const totalData = parseInt(count.total);
       const totalPage = Math.ceil(totalData / limit);
       const { rows: result } = await getRecipe({ offset, limit, sortBy, sort, search });
-      // console.log({ result });
       res.status(200).json({
         pagination: {
           currentPage: page,
@@ -72,7 +71,8 @@ const recipeControl = {
       const id = req.params.id;
       console.log(id);
       const { title, ingre } = req.body;
-      const data = { id, title, ingre };
+      const result = await cloudinary.uploader.upload(req.file.path);
+      const data = { id, title, ingre, image: result.secure_url };
       await updateRecipe(data);
       console.log(data);
       res.status(200).json({
