@@ -11,9 +11,12 @@ const recipeControl = {
   insertRecipe: async (req, res) => {
     try {
       const { title, ingre } = req.body;
-      const result = await cloudinary.uploader.upload(req.file.path);
+      const dataimage = req.files.img[0].path;
+      console.log("liat data path", dataimage);
+      const result = await cloudinary.uploader.upload(req.files.img[0].path, { folder: "FoodRecipe/foto" });
+      const video = await cloudinary.uploader.upload(req.files.vid[0].path, { folder: "FoodRecipe/video", resource_type: "video" });
       console.log(result);
-      const data = { title, ingre, image: result.secure_url };
+      const data = { title, ingre, img: result.secure_url, vid: video.secure_url };
       await insertRecipe(data);
       console.log(data);
       res.status(200).json({

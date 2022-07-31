@@ -6,7 +6,15 @@ const { upload } = require("../middlewares/multer");
 const cpUpload = upload.fields([{ name: "img" }, { name: "vid" }]);
 
 router
-  .post("/", protect, upload.single("img"), recipeControl.insertRecipe)
+  .post(
+    "/",
+    protect,
+    upload.fields([
+      { name: "img", maxCount: 1 },
+      { name: "vid", maxCount: 1 },
+    ]),
+    recipeControl.insertRecipe
+  )
   .get("/", recipeControl.getRecipe)
   .get("/:id", recipeControl.detailRecipe)
   .delete("/:id", protect, recipeControl.deleteRecipe)

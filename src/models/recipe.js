@@ -2,7 +2,7 @@ const pool = require("../config/pg");
 
 const recipeModel = {
   insertRecipe: (data) => {
-    return pool.query("INSERT INTO recipe(title,ingre,img)VALUES($1,$2,$3)", [data.title, data.ingre, data.image]);
+    return pool.query("INSERT INTO recipe(title,ingre,img,vid)VALUES($1,$2,$3,$4)", [data.title, data.ingre, data.img, data.vid]);
   },
   getRecipe: ({ sortBy, sort, limit, offset, search }) => {
     return pool.query(`SELECT idrecipe,title,ingre,img,vid FROM recipe WHERE LOWER(title) LIKE LOWER('%${search}%') ORDER BY ${sortBy} ${sort} LIMIT ${limit} OFFSET ${offset}`);
