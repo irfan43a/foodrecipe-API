@@ -74,8 +74,17 @@ const recipeControl = {
       const id = req.params.id;
       console.log(id);
       const { title, ingre } = req.body;
-      const result = await cloudinary.uploader.upload(req.file.path);
-      const data = { id, title, ingre, image: result.secure_url };
+      const foto = req.files?.path;
+      const fideo = req.files?.path;
+      let result;
+      let video;
+      if (foto) {
+        result = await cloudinary.uploader.upload(req.files?.img[0].path, { folder: "FoodRecipe/foto" });
+      }
+      if (fideo) {
+        video = await cloudinary.uploader.upload(req.files?.vid[0].path, { folder: "FoodRecipe/video", resource_type: "video" });
+      }
+      const data = { id, title, ingre, img: result?.url || null, vid: video?.url || null };
       await updateRecipe(data);
       console.log(data);
       res.status(200).json({

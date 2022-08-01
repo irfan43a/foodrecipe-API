@@ -50,12 +50,13 @@ const login = async (req, res, next) => {
     console.log(user);
     delete user.pass;
     const payload = {
+      id: user.id,
       email: user.email,
       role: user.role,
     };
     // generate token
 
-    user.token = authHelper.generateToken(payload);
+    user.Token = authHelper.generateToken(payload);
     user.refreshToken = authHelper.generateRefreshToken(payload);
     res.cookie("token", user.token, {
       httpOnly: true,

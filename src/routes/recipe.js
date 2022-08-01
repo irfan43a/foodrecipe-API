@@ -18,6 +18,13 @@ router
   .get("/", recipeControl.getRecipe)
   .get("/:id", recipeControl.detailRecipe)
   .delete("/:id", protect, recipeControl.deleteRecipe)
-  .put("/:id", upload.single("img"), recipeControl.updateRecipe);
+  .put(
+    "/:id",
+    upload.fields([
+      { name: "img", maxCount: 1 },
+      { name: "vid", maxCount: 1 },
+    ]),
+    recipeControl.updateRecipe
+  );
 
 module.exports = router;

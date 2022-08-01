@@ -14,7 +14,7 @@ const recipeModel = {
     return pool.query("DELETE FROM recipe WHERE idrecipe = $1", [id]);
   },
   updateRecipe: (data) => {
-    return pool.query("UPDATE recipe SET title = $1, ingre = $2, img = $3 WHERE idrecipe = $4", [data.title, data.ingre, data.image, data.id]);
+    return pool.query("UPDATE recipe SET title = COALESCE( $1,title), ingre =COALESCE( $2,ingre), img =COALESCE ($3,img),vid=COALESCE($4,vid) WHERE idrecipe = $5", [data.title, data.ingre, data.image, data.vid, data.id]);
   },
   detailRecipe: (id) => {
     return pool.query("SELECT * FROM recipe where idrecipe = $1", [id]);
