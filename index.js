@@ -19,7 +19,7 @@ app.use(
     preflightContinue: true,
     optionsSuccessStatus: 204,
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://foodrecipe-one.vercel.app"],
   })
 );
 app.use(morgan("dev"));
