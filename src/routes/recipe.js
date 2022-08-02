@@ -8,7 +8,7 @@ const cpUpload = upload.fields([{ name: "img" }, { name: "vid" }]);
 router
   .post(
     "/",
-    protect,
+
     upload.fields([
       { name: "img", maxCount: 1 },
       { name: "vid", maxCount: 1 },
@@ -17,7 +17,7 @@ router
   )
   .get("/", recipeControl.getRecipe)
   .get("/:id", recipeControl.detailRecipe)
-  .delete("/:id", protect, recipeControl.deleteRecipe)
+  .delete("/:id", recipeControl.deleteRecipe)
   .put(
     "/:id",
     upload.fields([
