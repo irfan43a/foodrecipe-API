@@ -73,9 +73,11 @@ const recipeControl = {
     try {
       const id = req.params.id;
       console.log(id);
+      console.log("dari files", req.files);
       const { title, ingre } = req.body;
-      const foto = req.files?.path;
-      const fideo = req.files?.path;
+      const foto = req.files?.img;
+      const fideo = req.files?.vid;
+      console.log(foto, fideo);
       let result;
       let video;
       if (foto) {
