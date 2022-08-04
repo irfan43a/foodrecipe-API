@@ -1,6 +1,6 @@
 # foodrecipe-API
 <div align="center">
-  <img src="https://res.cloudinary.com/hirejob/image/upload/v1659591783/FoodRecipe/pageimage/logofood_shlzbp.jpg" />
+  <img src="https://res.cloudinary.com/hirejob/image/upload/v1659591783/FoodRecipe/pageimage/logofood_shlzbp.jpg" width="150px"/>
 </div>
 This API is for Mama Recipe Food is a website application that is intended to be able to share various kinds of food recipes, also included with tutorials in the form of videos, users can also save and like recipes belonging to other users. Recipe Food is developed using PostgreSQL, Express JS, Next JS and Node JS technologies.
 
