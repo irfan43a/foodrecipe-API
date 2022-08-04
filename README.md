@@ -1,4 +1,4 @@
-# foodrecipe-API
+# Foodrecipe-API
 <div align="center">
   <img src="https://res.cloudinary.com/hirejob/image/upload/v1659591783/FoodRecipe/pageimage/logofood_shlzbp.jpg" width="450px"/>
 </div>
@@ -68,7 +68,7 @@ Please make sure to update tests as appropriate.
 ## Related Project
 
 - [Mama Food Recipe FrontEnd App](https://github.com/irfan43a/foodrecipe)
-- [Mama Food Recipe BackEnd API](https://github.com/irfan43a/foodrecipe-AP)
+- [Mama Food Recipe BackEnd API](https://github.com/irfan43a/foodrecipe-API)
 - [Mama Food Recipe Demo](https://foodrecipe-one.vercel.app/)
 - [Mama Food Recipe Web Service](https://recipefood-app.herokuapp.com)
 
